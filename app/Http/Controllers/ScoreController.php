@@ -22,23 +22,8 @@ class ScoreController extends Controller
         $reservation_id = 1;
         $result = $this->scoreModel->getScores($reservation_id);
 
-        $list = "";
-        foreach ($result as $scoreOutput) {
-
-            $list .= "<div class='py-1 m-5 bg-[#fbd158]'>
-            <div class='flex gap-10 m-3 w-l'>
-                <p class='align-self-center'>Naam: $scoreOutput->name | Score: $scoreOutput->score</p>
-                <div>
-                    <button class='bg-[#fbede2] py-3 w-20 rounded-md'>Edit</button>
-                    <button class='bg-[#fbede2] py-3 w-20 rounded-md'>Delete</button>
-                </div>
-            </div>
-        </div>";
-        }
-
-
         $data = [
-            'score' => $list,
+            'score' => $result,
         ];
 
         return view('scores', $data);
@@ -60,5 +45,13 @@ class ScoreController extends Controller
         ]);
 
         return redirect(route('scores'));
+    }
+
+    public function destroy($id)
+    {
+        $score = Score::findOrFail($id);
+        $score->delete();
+
+        return redirect()->back()->with('success', 'Score deleted successfully.');
     }
 }
