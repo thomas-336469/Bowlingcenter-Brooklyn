@@ -24,16 +24,16 @@ class WorkerReservation extends Model
 
     public function rate()
     {
-        return $this->hasOne(Rate::class);
+        return $this->belongsTo(Rate::class);
     }
 
     public function alley()
     {
-        return $this->hasOne(Alley::class);
+        return $this->belongsTo(Alley::class);
     }
 
     public function option()
     {
-        return $this->hasOne(Option::class);
+        return $this->belongsTo(Option::class);
     }
 }
