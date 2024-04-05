@@ -10,21 +10,25 @@ use Illuminate\Support\Facades\Log;
 
 class UserReservationController extends Controller
 {
+    // Display a listing of the reservations.
     public function index()
     {
         $reservations = UserReservation::all();
 
-        return view('UserReservation.index', ['reservations' => $reservations]);
+        return view('UserReservation.index', compact('reservations'));
     }
 
+    // Show the form for creating a new reservation.
     public function create()
     {
         $options = Option::all();
-        return view('UserReservation.create', ['options' => $options]);
+        return view('UserReservation.create', compact('options'));
     }
 
+    // Store a newly created reservation in storage.
     public function store(Request $request)
     {        
+        // Validate the incoming request data.
         $request->validate([
             'option_id' => 'required',
             'date' => 'required',
@@ -33,12 +37,14 @@ class UserReservationController extends Controller
             'amount_of_children' => 'required'
         ]);
     
+        // Merge additional data into the request.
         $request->merge([
             'total_cost' => 0,
             'alley_id' => 1,
             'rate_id' => 1
         ]);
     
+        // Create a new reservation record.
         UserReservation::create([
             'user_id' => auth()->user()->id,
             'option_id' => $request->option_id,
@@ -51,10 +57,57 @@ class UserReservationController extends Controller
             'amount_of_children' => $request->amount_of_children
         ]);
 
+        // Log the store action.
         Log::info('2nd Store method called', ['request' => $request->all()]);
 
+        // Redirect to index page with success message.
         return redirect()->route('reservations.index')->with('success', 'Reservation created successfully');
 
+        // This log will not be reached as it is after the return statement.
         Log::info('3rd Store method called', ['request' => $request->all()]);
+    }
+
+    // Display the specified reservation.
+    public function show(UserReservation $userReservation)
+    {
+        return view('UserReservation.show', ['userReservation' => $userReservation]);
+    }
+
+    // Show the form for editing the specified reservation.
+    public function edit($id)
+    {
+        $reservation = UserReservation::findOrFail($id);
+        return view('UserReservation.edit', compact('reservation'), ['options' => Option::all()]);
+    }
+
+    // Update the specified reservation in storage.
+    public function update($id, Request $request, UserReservation $userReservation)
+    {
+        // Validate the incoming request data.
+        $request->validate([
+            'option_id' => 'required',
+            'date' => 'required',
+            'duration' => 'required',
+            'amount_of_people' => 'required',
+            'amount_of_children' => 'required'
+        ]);
+
+        // Find the reservation by ID and update it with new data.
+        $userReservation = UserReservation::findOrFail($id);
+        $userReservation->update($request->all());
+
+        // Redirect to index page with success message.
+        return redirect()->route('reservations.index')->with('success', 'Reservation updated successfully');
+    }
+
+    // Remove the specified reservation from storage.
+    public function destroy($id)
+    {
+        // Find the reservation by ID and delete it.
+        $reservation = UserReservation::findOrFail($id);
+        $reservation->delete();
+
+        // Redirect to index page with success message.
+        return redirect()->route('reservations.index')->with('success', 'Reservation deleted successfully');
     }
 }
