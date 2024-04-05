@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminOptionsController;
+use Illuminate\Routing\Middleware;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,11 +15,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/options', [AdminOptionsController::class, 'index'])->name('admin.options.index');
-});
-
-
+Route::get('/admin/options', [AdminOptionsController::class, 'index'])->name('admin.options.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
