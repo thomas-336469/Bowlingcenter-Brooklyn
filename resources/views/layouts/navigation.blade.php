@@ -15,10 +15,12 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <!-- Add the new navigation link here -->
+                    <!-- Conditionally show the link for users with an admin role -->
+                    @if(auth()->user()->role === 'admin')
                     <x-nav-link :href="route('admin.options.index')" :active="request()->routeIs('admin.options.index')">
                         {{ __('Admin Options') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 
