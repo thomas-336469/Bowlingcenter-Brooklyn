@@ -11,7 +11,8 @@
                 <div class='flex gap-10 m-3 w-l'>
                     <p class='align-self-center'>Naam: {{ $scoreOutput->name }} | Score: {{ $scoreOutput->score }}</p>
                     <div>
-                        <button class='bg-[#fbede2] py-3 w-20 rounded-md'>Edit</button>
+                        <a href="{{ route('scores.edit', $scoreOutput->id) }}"
+                            class='bg-[#fbede2] py-3 w-20 rounded-md'>Edit</a>
                         <form method='POST' action=" {{ route('scores.delete', $scoreOutput->id) }}">
                             @csrf
                             @method('DELETE')
