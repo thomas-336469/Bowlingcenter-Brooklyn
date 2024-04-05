@@ -36,11 +36,6 @@ class OptionsController extends Controller
     }
 
     // Delete Option
-    public function delete($id)
-    {
-        $option = Option::findOrFail($id);
-        return view('admin.options.delete', compact('option'));
-    }
 
     public function destroy($id)
     {
