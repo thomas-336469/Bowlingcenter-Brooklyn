@@ -26,7 +26,7 @@ class OptionsController extends Controller
         $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-            'prijs' => 'required|numeric',
+            'price' => 'required|numeric',
         ]);
 
         $option = Option::findOrFail($id);
@@ -63,13 +63,13 @@ class OptionsController extends Controller
         $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
-            'prijs' => 'required|numeric',
+            'price' => 'required|numeric',
         ]);
 
         $option = new Option();
         $option->name = $request->name;
         $option->description = $request->description;
-        $option->prijs = $request->prijs; // Explicitly set prijs value
+        $option->price = $request->price; // Explicitly set price value
         $option->save();
 
         return redirect()->route('admin.options.index')->with('success', 'Option created successfully');

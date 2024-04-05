@@ -20,8 +20,8 @@
                     <textarea name="description" id="description" rows="3" class="mt-1 p-2 block w-full border-gray-300 rounded-md" placeholder="Enter description"></textarea>
                 </div>
                 <div class="mb-4">
-                    <label for="prijs" class="block text-sm font-medium text-gray-700">Prijs</label>
-                    <input type="number" name="prijs" id="prijs" class="mt-1 p-2 block w-full border-gray-300 rounded-md" placeholder="Enter prijs">
+                    <label for="price" class="block text-sm font-medium text-gray-700">price</label>
+                    <input type="number" name="price" id="price" class="mt-1 p-2 block w-full border-gray-300 rounded-md" placeholder="Enter price">
                 </div>
                 <div class="flex justify-between mt-4"> <!-- Adjusted class to flex justify-between -->
                     <div>

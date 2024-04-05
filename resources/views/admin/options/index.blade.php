@@ -35,7 +35,7 @@
                 @foreach ($options as $option)
                 <li class="bg-main p-3 rounded-lg m-4 flex justify-between items-center text-dark text-xl">
                     <div>
-                        {{ $option->name }} | {{ $option->description }} | {{ $option->prijs }}
+                        {{ $option->name }} | {{ $option->description }} | {{ $option->price }}
                     </div>
                     <div class="flex space-x-2">
                         <a href="{{ route('admin.options.edit', $option->id) }}" class="bg-secondary hover:bg-green-500 transition-colors text-white font-bold py-2 px-4 rounded">Edit</a>

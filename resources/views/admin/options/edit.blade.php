@@ -21,8 +21,8 @@
                     <textarea name="description" id="description" rows="3" class="mt-1 p-2 block w-full border-gray-300 rounded-md" placeholder="Enter description">{{ $option->description }}</textarea>
                 </div>
                 <div class="mb-4">
-                    <label for="prijs" class="block text-sm font-medium text-gray-700">Prijs</label>
-                    <input type="number" name="prijs" id="prijs" class="mt-1 p-2 block w-full border-gray-300 rounded-md" placeholder="Enter prijs" value="{{ $option->prijs }}">
+                    <label for="price" class="block text-sm font-medium text-gray-700">price</label>
+                    <input type="number" name="price" id="price" class="mt-1 p-2 block w-full border-gray-300 rounded-md" placeholder="Enter price" value="{{ $option->price }}">
                 </div>
                 <div class="flex justify-end mt-4"> <!-- Adjusted class for margin top -->
                     <a href="{{ route('admin.options.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2">Back to Options</a> <!-- Added back button -->

@@ -30,31 +30,31 @@ class DatabaseSeeder extends Seeder
         Option::create([
             'name' => 'Snackpakket Basis',
             'description' => 'Een eenvoudig snackpakket',
-            'prijs' => 5.99,
+            'price' => 5.99,
         ]);
 
         Option::create([
             'name' => 'Snackpakket Luxe',
             'description' => 'Een luxe snackpakket',
-            'prijs' => 10.99,
+            'price' => 10.99,
         ]);
 
         Option::create([
             'name' => 'Kinderpartij',
             'description' => 'Chips, cola en een verrassing',
-            'prijs' => 7.99,
+            'price' => 7.99,
         ]);
 
         Option::create([
             'name' => 'Vrijgezellenfeest',
             'description' => 'Feestpakket voor een geweldig vrijgezellenfeest',
-            'prijs' => 49.99,
+            'price' => 49.99,
         ]);
 
         Option::create([
             'name' => 'Filmavond',
             'description' => 'Een pakket voor een gezellige filmavond thuis',
-            'prijs' => 15.99,
+            'price' => 15.99,
         ]);
     }
 }
