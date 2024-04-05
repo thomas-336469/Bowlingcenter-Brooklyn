@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             RateSeeder::class,
             OptionSeeder::class,
             UserReservationSeeder::class,
+            ScoreSeeder::class,
         ]);
     }
 }
