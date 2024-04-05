@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\AdminOptionsController;
+use Illuminate\Routing\Middleware;
 use App\Http\Controllers\UserReservationController;
 
 Route::get('/', function () {
@@ -12,6 +15,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::get('/admin/options', [AdminOptionsController::class, 'index'])->name('admin.options.index');
+
 Route::middleware('auth')->group(function () {
     Route::get('/reservations', [UserReservationController::class, 'index'])->name('reservations.index');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -19,4 +25,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
