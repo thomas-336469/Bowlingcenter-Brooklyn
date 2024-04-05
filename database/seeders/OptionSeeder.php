@@ -2,63 +2,55 @@
 
 namespace Database\Seeders;
 
-use App\Models\Alley;
-use App\Models\Role;
-use App\Models\User;
 use App\Models\Option;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class OptionSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        Role::create(['name' => 'Admin']);
-        Role::create(['name' => 'Worker']);
-        Role::create(['name' => 'User']);
-        Role::create(['name' => 'Admin']);
-        Role::create(['name' => 'Worker']);
-        Role::create(['name' => 'User']);
-
-        User::factory()->create([
-            'name' => 'AdminAccount',
-            'email' => 'admin@bowling.com',
-            'phone' => '123456789',
-            'role_id' => '1',
-            'password' => bcrypt('admin123'),
-        ]);
-        Option::create([
+        Option::insert([
             'name' => 'Snackpakket Basis',
             'description' => 'Een eenvoudig snackpakket',
             'price' => 5.99,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
-        Option::create([
+        Option::insert([
             'name' => 'Snackpakket Luxe',
             'description' => 'Een luxe snackpakket',
             'price' => 10.99,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
-        Option::create([
+        Option::insert([
             'name' => 'Kinderpartij',
             'description' => 'Chips, cola en een verrassing',
             'price' => 7.99,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
-        Option::create([
+        Option::insert([
             'name' => 'Vrijgezellenfeest',
             'description' => 'Feestpakket voor een geweldig vrijgezellenfeest',
             'price' => 49.99,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
-        Option::create([
+        Option::insert([
             'name' => 'Filmavond',
             'description' => 'Een pakket voor een gezellige filmavond thuis',
             'price' => 15.99,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }
