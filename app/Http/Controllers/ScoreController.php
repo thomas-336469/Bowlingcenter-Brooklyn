@@ -54,4 +54,28 @@ class ScoreController extends Controller
 
         return redirect()->back()->with('success', 'Score deleted successfully.');
     }
+
+    public function edit($id)
+    {
+        $score = Score::findOrFail($id);
+
+        return view('editscore', compact('score'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Find the score by its ID
+        $score = Score::findOrFail($id);
+
+        // Update the score attributes with the new values
+        $score->name = $request->input('name');
+        $score->score = $request->input('score');
+        // You may update other attributes as needed
+
+        // Save the updated score
+        $score->save();
+
+        // Redirect back to the scores page with a success message
+        return redirect()->route('scores')->with('success', 'Score updated successfully.');
+    }
 }
