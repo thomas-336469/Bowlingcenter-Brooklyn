@@ -37,7 +37,72 @@ class DatabaseSeeder extends Seeder
         Rate::create([
             'weekday' => 'Monday',
             'period' => 'Day',
-            'rental_price' => 10,
+            'rental_price' => 24,
+        ]);
+        Rate::create([
+            'weekday' => 'Monday',
+            'period' => 'Night',
+            'rental_price' => 24,
+        ]);
+        Rate::create([
+            'weekday' => 'Tuesday',
+            'period' => 'Day',
+            'rental_price' => 24,
+        ]);
+        Rate::create([
+            'weekday' => 'Tuesday',
+            'period' => 'Night',
+            'rental_price' => 24,
+        ]);
+        Rate::create([
+            'weekday' => 'Wednesday',
+            'period' => 'Day',
+            'rental_price' => 24,
+        ]);
+        Rate::create([
+            'weekday' => 'Wednesday',
+            'period' => 'Night',
+            'rental_price' => 24,
+        ]);
+        Rate::create([
+            'weekday' => 'Thursday',
+            'period' => 'Day',
+            'rental_price' => 24,
+        ]);
+        Rate::create([
+            'weekday' => 'Thursday',
+            'period' => 'Night',
+            'rental_price' => 24,
+        ]);
+        Rate::create([
+            'weekday' => 'Friday',
+            'period' => 'Day',
+            'rental_price' => 28,
+        ]);
+        Rate::create([
+            'weekday' => 'Friday',
+            'period' => 'Night',
+            'rental_price' => 33.50,
+        ]);
+        Rate::create([
+            'weekday' => 'Saturday',
+            'period' => 'Day',
+            'rental_price' => 28,
+        ]);
+        Rate::create([
+            'weekday' => 'Saturday',
+            'period' => 'Night',
+            'rental_price' => 33.50,
+        ]);
+        Rate::create([
+            'weekday' => 'Sunday',
+            'period' => 'Day',
+            'rental_price' => 28,
+        ]);
+        Rate::create([
+            'weekday' => 'Sunday',
+            'period' => 'Night',
+            'rental_price' => 33.50,
         ]);
 
         Option::create([
