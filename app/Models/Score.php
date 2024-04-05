@@ -19,4 +19,16 @@ class Score extends Model
     {
         return $this->belongsTo(UserReservation::class);
     }
+
+    public function getScores($id)
+    {
+        return $this->select(
+            'reservation_id',
+            'name',
+            'score',
+        )
+            ->from('scores')
+            ->where('reservation_id', $id)
+            ->get();
+    }
 }
