@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Alley;
 use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -25,6 +26,13 @@ class DatabaseSeeder extends Seeder
             'phone' => '123456789',
             'role_id' => '1',
             'password' => bcrypt('admin123'),
+        ]);
+
+        $this->call([
+            AlleySeeder::class,
+            RateSeeder::class,
+            OptionSeeder::class,
+            UserReservationSeeder::class,
         ]);
     }
 }
