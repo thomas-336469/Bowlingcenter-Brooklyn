@@ -39,11 +39,11 @@
                         {{ $option->name }} | {{ $option->description }} | {{ $option->price }}
                     </div>
                     <div class="flex space-x-2">
-                        <a href="{{ route('admin.options.edit', $option->id) }}" class="bg-secondary hover:bg-green-500 transition-colors text-dark font-bold py-2 px-4 rounded">Edit</a>
+                        <a href="{{ route('admin.options.edit', $option->id) }}" class="bg-secondary hover:bg-green-500 hover:text-white transition-colors text-dark font-bold py-2 px-4 rounded">Edit</a>
                         <form action="{{ route('admin.options.destroy', $option->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this option?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="bg-secondary hover:bg-red-500 transition-colors text-dark font-bold py-2 px-4 rounded">Delete</button>
+                            <button type="submit" class="bg-secondary hover:bg-red-500 hover:text-white transition-colors text-dark font-bold py-2 px-4 rounded">Delete</button>
                         </form>
                     </div>
                 </li>
@@ -52,6 +52,6 @@
         </div>
     </div>
     <div class="flex justify-center mt-8 text-2xl">
-        <a href="{{ route('admin.options.create') }}" class="bg-dark hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Add an Option</a>
+        <a href="{{ route('admin.options.create') }}" class="bg-dark hover:bg-gray-700  text-white font-bold py-2 px-4 rounded-lg">Add an Option</a>
     </div>
 </x-app-layout>
