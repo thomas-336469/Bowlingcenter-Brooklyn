@@ -6,11 +6,6 @@
     </x-slot>
 
     <div class="card">
-        <div class="title">
-            <h1>
-                {{-- {{ $title }} --}}
-            </h1>
-        </div>
         <form method="post" action="{{ route('addscore.store') }}">
             @csrf
             @method('POST')
