@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\UserReservation;
 
@@ -9,7 +10,9 @@ class UserReservationController extends Controller
 {
     public function index()
     {
-        return view('UserReservation.index');
+        $reservations = UserReservation::all();
+
+        return view('UserReservation.index', compact('reservations'));
     }
 
     public function create()
@@ -20,22 +23,16 @@ class UserReservationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required',
-            'rate_id' => 'required',
-            'alley_id' => 'required',
-            'option_id' => 'required',
-            'date' => 'required',
-            'duration' => 'required',
-            'total_cost' => 'required',
-            'amount_of_people' => 'required',
-            'amount_of_children' => 'required',
+            'option' => 'required|string',
+            'date' => 'required|date',
+            'duration' => 'required|integer',
+            'amount_of_people' => 'required|integer',
         ]);
 
         UserReservation::create($request->all());
-
-        return redirect()->route('UserReservation.index')
-            ->with('success', 'UserReservation created successfully.');
         
+        return redirect()->route('reservations.index')
+            ->with('success', 'UserReservation created successfully.');
     }
 
     public function show(UserReservation $UserReservation)
@@ -51,15 +48,10 @@ class UserReservationController extends Controller
     public function update(Request $request, UserReservation $UserReservation)
     {
         $request->validate([
-            'user_id' => 'required',
-            'rate_id' => 'required',
-            'alley_id' => 'required',
-            'option_id' => 'required',
+            'option' => 'required',
             'date' => 'required',
             'duration' => 'required',
-            'total_cost' => 'required',
             'amount_of_people' => 'required',
-            'amount_of_children' => 'required',
         ]);
 
         $UserReservation->update($request->all());

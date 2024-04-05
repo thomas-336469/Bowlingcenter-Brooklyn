@@ -20,6 +20,8 @@ Route::get('/admin/options', [AdminOptionsController::class, 'index'])->name('ad
 
 Route::middleware('auth')->group(function () {
     Route::get('/reservations', [UserReservationController::class, 'index'])->name('reservations.index');
+    Route::get('/reservations/create', [UserReservationController::class, 'create'])->name('reservations.create');
+    Route::post('/reservations/store', [UserReservationController::class, 'store'])->name('reservations.store');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
