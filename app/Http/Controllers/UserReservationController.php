@@ -7,6 +7,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\UserReservation;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Rate;
+use App\Models\Alley;
+use App\Models\WorkerReservation;
 
 class UserReservationController extends Controller
 {
@@ -43,6 +47,26 @@ class UserReservationController extends Controller
             'alley_id' => 1,
             'rate_id' => 1
         ]);
+
+        // get the date times for the whereBetween query
+        $date = date('Y-m-d H:i:s', strtotime($request->date));
+        $endDate = date('Y-m-d H:i:s', strtotime($date . ' + ' . $request->duration . ' hours'));
+
+        // get all reservations for the given date
+        $takenAlleys = WorkerReservation::whereBetween('date', [$date, $endDate])
+            ->get()
+            ->concat(UserReservation::whereBetween('date', [$date, $endDate])->get());
+        $isAlleyFree = $takenAlleys->count() < Alley::count();
+
+        // Check if there are any free alleys if not return back with an error
+        if (!$isAlleyFree) {
+            return Redirect::back()->withErrors(['date' => 'There are no free alleys for the given date']);
+        }
+
+        // Get the rate for the given date
+        $daytime = ($request->date < date('Y-m-d 18:00:00')) ? 'Day' : 'Night';
+        $rate = Rate::where('weekday', date('l', strtotime($request->date)))->where('period', $daytime)
+            ->first();
     
         // Create a new reservation record.
         UserReservation::create([
