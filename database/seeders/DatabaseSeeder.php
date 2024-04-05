@@ -56,11 +56,5 @@ class DatabaseSeeder extends Seeder
             'description' => 'Een pakket voor een gezellige filmavond thuis',
             'prijs' => 15.99,
         ]);
-        User::create([
-            'name' => 'AdminAccount',
-            'email' => 'admin@bowling.com',
-            'role' => 'admin',
-            'password' => bcrypt('admin123'),
-        ]);
     }
 }

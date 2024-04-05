@@ -17,7 +17,7 @@ class CreateOptionsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->decimal('prijs', 8, 2);
+            $table->decimal('prijs', 8, 2)->default(0.00);
             $table->timestamps();
         });
     }
