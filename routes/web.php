@@ -15,6 +15,7 @@ Route::get('/dashboard', function () {
 Route::get('/scores', [ScoreController::class, 'index'])->middleware(['auth', 'verified'])->name('scores');
 Route::get('/addscore', [ScoreController::class, 'add'])->middleware(['auth', 'verified'])->name('addscore.index');
 Route::post('/addscore', [ScoreController::class, 'store'])->middleware(['auth', 'verified'])->name('addscore.store');
+Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->middleware(['auth', 'verified'])->name('scores.delete');
 
 
 Route::middleware('auth')->group(function () {
