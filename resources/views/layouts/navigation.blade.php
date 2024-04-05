@@ -15,6 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                <!-- Add a link to the reservations index page -->
+                    <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
+                        {{ __('Reservations') }}
+                    </x-nav-link>
+                <!-- Add a link to the reservations create page -->
+                    <x-nav-link :href="route('reservations.create')" :active="request()->routeIs('reservations.create')">
+                        {{ __('Create Reservation') }}
+                    </x-nav-link>
                     <!-- Conditionally show the link for users with an admin role -->
                     @if(auth()->user()->role_id === 1)
                     <x-nav-link :href="route('admin.options.index')" :active="request()->routeIs('admin.options.index')">
