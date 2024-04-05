@@ -3,6 +3,12 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Create Reservation') }}
         </h2>   
+
+        @forelse($errors->all() as $whoops)
+            {{ $whoops }}
+        @empty
+            NO ERRORS
+        @endforelse
     </x-slot>
 
     <div class="py-12">
@@ -11,7 +17,7 @@
                 <div class="p-6 bg-white border-b border-gray-200 ">
                     <form method="POST" action="{{ route('reservations.store') }}">
                         @csrf
-
+                        @method('POST')
                         <!-- Date and Time -->
                         <div class="mt-4">
                             <label for="date" class="block font-medium text-sm text-gray-700">Date - Time:</label>
@@ -20,20 +26,30 @@
 
                         <!-- Options -->
                         <div class="mt-4">
-                            <label for="option" class="block font-medium text-sm text-gray-700">Options</label>
-                            <input id="option" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="option" />
+                            <label for="option_id" class="block font-medium text-sm text-gray-700">Options</label>
+                            <select name="option_id" id="option_id" class="form-control">
+                                @foreach($options as $option)
+                                <option value="{{ $option->id }}">{{ $option->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- Duration -->
                         <div class="mt-4">
                             <label for="duration" class="block font-medium text-sm text-gray-700">Duration</label>
-                            <input id="duration" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="duration" />
+                            <input id="duration" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="number" name="duration" required />
                         </div>
 
                         <!-- Number of People -->
                         <div class="mt-4">
                             <label for="amount_of_people" class="block font-medium text-sm text-gray-700">Number of People</label>
                             <input id="amount_of_people" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="number" name="amount_of_people" required />
+                        </div>
+
+                        <!-- Number of Children -->
+                        <div class="mt-4">
+                            <label for="amount_of_children" class="block font-medium text-sm text-gray-700">Number of Children</label>
+                            <input id="amount_of_children" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="number" name="amount_of_children" required />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
