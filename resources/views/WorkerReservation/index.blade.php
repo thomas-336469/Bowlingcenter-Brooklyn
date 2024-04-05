@@ -13,4 +13,9 @@
         </div>
     </div>
     @endforeach
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-4">
+        <div class="px-4 py-5 sm:px-6">
+            <a href="{{ route('worker.reservations.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Reservation</a>
+        </div>
+    </div>
 </x-app-layout>

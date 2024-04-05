@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminOptionsController;
 use App\Http\Controllers\WorkerReservationController;
+use App\Models\Option;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,7 +22,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/worker/reservations', [WorkerReservationController::class, 'index'])->name('worker.reservations.index');
-    Route::post('/worker/reservations', [WorkerReservationController::class, 'store'])->name('worker.reservations.store');
+    Route::post('/worker/reservations/store', [WorkerReservationController::class, 'store'])->name('worker.reservations.store');
+    Route::get('/worker/reservations/create', function () {
+        $options = Option::all();
+        return view('workerreservation.create', ['options' => $options]);
+    })->name('worker.reservations.create');
 });
 
 

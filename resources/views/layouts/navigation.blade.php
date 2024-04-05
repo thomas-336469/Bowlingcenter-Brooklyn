@@ -21,6 +21,12 @@
                         {{ __('Admin Options') }}
                     </x-nav-link>
                     @endif
+                    <!-- Conditionally show the link for users with a worker or admin role -->
+                    @if(auth()->user()->role_id === 2 || auth()->user()->role_id === 1)
+                    <x-nav-link :href="route('worker.reservations.index')" :active="request()->routeIs('worker.reservations.index')">
+                        {{ __('Worker Reservations') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

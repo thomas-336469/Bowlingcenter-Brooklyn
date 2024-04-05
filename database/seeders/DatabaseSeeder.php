@@ -50,6 +50,14 @@ class DatabaseSeeder extends Seeder
             'alley_number' => 1,
             'has_bumpers' => 0,
         ]);
+        Alley::create([
+            'alley_number' => 2,
+            'has_bumpers' => 1,
+        ]);
+        Alley::create([
+            'alley_number' => 3,
+            'has_bumpers' => 0,
+        ]);
 
         // Create 3 test reservations
         WorkerReservation::create([
