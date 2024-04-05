@@ -52,6 +52,6 @@
         </div>
     </div>
     <div class="flex justify-center mt-8 text-2xl">
-        <a href="{{ route('admin.options.create') }}" class="bg-dark hover:bg-gray-700  text-white font-bold py-2 px-4 rounded-lg">Add an Option</a>
+        <a href="{{ route('admin.options.create') }}" class="bg-dark hover:bg-gray-700 font-roboto-mono text-white font-bold py-2 px-4 rounded-lg">Add an Option</a>
     </div>
 </x-app-layout>
