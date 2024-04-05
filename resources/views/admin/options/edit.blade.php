@@ -14,21 +14,21 @@
                 @method('PUT')
                 <div class="mb-4">
                     <label for="name" class="block text-xl font-semibold text-dark">Option Name</label>
-                    <input type="text" name="name" id="name" class="mt-1 p-2 block w-full rounded-md placeholder-dark bg-main border-none" placeholder="Option name..." value="{{ $option->name }}">
+                    <input type="text" name="name" id="name" class="mt-1 p-2 block w-full rounded-md text-dark bg-main border-none" placeholder="Option name..." value="{{ $option->name }}">
                     @error('name')
                     <div class="text-red-600">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-4">
                     <label for="description" class="block text-xl font-semibold text-dark">Option description</label>
-                    <textarea name="description" id="description" rows="3" class="mt-1 p-2 block w-full rounded-md placeholder-dark bg-main border-none" placeholder="Option description...">{{ $option->description }}</textarea>
+                    <textarea name="description" id="description" rows="3" class="mt-1 p-2 block w-full rounded-md text-dark bg-main border-none" placeholder="Option description...">{{ $option->description }}</textarea>
                     @error('description')
                     <div class="text-red-600">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-4">
                     <label for="price" class="block text-xl font-semibold text-dark">Option price</label>
-                    <input type="number" name="price" id="price" class="mt-1 p-2 block w-full rounded-md placeholder-dark bg-main border-none" placeholder="Option price..." value="{{ $option->price }}">
+                    <input type="number" name="price" id="price" class="mt-1 p-2 block w-full rounded-md text-dark bg-main border-none" placeholder="Option price..." value="{{ $option->price }}">
                     @error('price')
                     <div class="text-red-600">{{ $message }}</div>
                     @enderror
