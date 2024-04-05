@@ -1,49 +1,54 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Scores') }}
-        </h2>
+    <x-slot name="title">
+        Edit Score
     </x-slot>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Edit Score</div>
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('scores.update', $score->id) }}">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="reservation_id" value="1">
+    <div class="text-center mb-8">
+        <h1 class="font-bold text-dark text-9xl font-roboto-mono">Edit Score</h1>
+    </div>
 
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+    <div class="bg-secondary flex justify-center items-center h-full mx-auto w-2/5 rounded-lg">
+        <div class="w-full max-w-xl px-8 py-6 font-roboto-mono font-semibold">
+            <form id="create-option-form" method="POST" action="{{ route('scores.update', $score->id) }}">
+                @csrf
+                @method('PUT')
+                <div class="mb-4">
+                    <input type="hidden" name="reservation_id" value="1">
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ $score->name }}" required autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="score" class="col-md-4 col-form-label text-md-right">Score</label>
-
-                                <div class="col-md-6">
-                                    <input id="score" type="number" class="form-control" name="score" value="{{ $score->score }}" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Update Score
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <label for="name" class="block text-xl font-semibold text-dark">Name</label>
+                    <input id="name" type="text" name="name"
+                        class="mt-1 p-2 block w-full rounded-md placeholder-dark bg-main border-none"
+                        placeholder="Player name..." value="{{ $score->name }}" required autofocus>
+                    @error('name')
+                        <div class="text-red-600">{{ $message }}</div>
+                    @enderror
                 </div>
-            </div>
+                <div class="mb-4">
+                    <label for="score" class="block text-xl font-semibold text-dark">Score</label>
+
+                    <input id="score" type="number" name="score"
+                        class="mt-1 p-2 block w-full rounded-md placeholder-dark bg-main border-none"
+                        placeholder="Score..." value="{{ $score->score }}" required>
+                    @error('score')
+                        <div class="text-red-600">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="flex justify-between mt-4">
+                    <div>
+                        <a href="{{ route('scores') }}"
+                            class="bg-dark hover:bg-gray-700 text-secondary font-bold py-2 px-4 rounded mr-2 w-36 text-center">Back
+                            to Scores</a>
+                    </div>
+                    <div>
+                        <a href=" {{ route('scores') }}"
+                            onclick="event.preventDefault(); document.getElementById('create-option-form').submit();"
+                            type="submit"
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-36">Update
+                            Score</a>
+                    </div>
+            </form>
         </div>
     </div>
 
