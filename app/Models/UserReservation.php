@@ -28,21 +28,21 @@ class UserReservation extends Model
 
     public function alley()
     {
-        return $this->hasOne(Alley::class);
+        return $this->belongsTo(Alley::class);
     }
 
     public function rate()
     {
-        return $this->hasOne(Rate::class);
+        return $this->belongsTo(Rate::class);
     }
 
     public function option()
     {
-        return $this->hasOne(Option::class);
+        return $this->belongsTo(Option::class);
     }
 
     public function scores()
     {
-        return $this->hasMany(Score::class);
+        return $this->belongsTo(Score::class);
     }
 }
