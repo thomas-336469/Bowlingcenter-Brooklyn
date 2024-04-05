@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <!-- Conditionally show the link for users with an admin role -->
-                    @if(auth()->user()->role === 'admin')
+                    @if(auth()->user()->role_id === 1)
                     <x-nav-link :href="route('admin.options.index')" :active="request()->routeIs('admin.options.index')">
                         {{ __('Admin Options') }}
                     </x-nav-link>

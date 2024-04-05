@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminOptionsController;
+use App\Http\Controllers\WorkerReservationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,6 +17,11 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/options', [AdminOptionsController::class, 'index'])->name('admin.options.index');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/worker/reservations', [WorkerReservationController::class, 'index'])->name('worker.reservations.index');
+    Route::post('/worker/reservations', [WorkerReservationController::class, 'store'])->name('worker.reservations.store');
 });
 
 
