@@ -11,7 +11,7 @@ use App\Models\Option;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Queue\Worker;
-use Illuminate\Queue\Worker;
+
 
 class DatabaseSeeder extends Seeder
 {
