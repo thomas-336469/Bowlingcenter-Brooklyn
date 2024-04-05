@@ -10,13 +10,42 @@ use Illuminate\Support\Facades\DB;
 class ScoreController extends Controller
 {
 
-    public function __construct()
+    private $scoreModel;
+
+    public function __construct(Score $scoreModel)
     {
+        $this->scoreModel = $scoreModel;
     }
 
     public function index()
     {
+        $reservation_id = 1;
+        $result = $this->scoreModel->getScores($reservation_id);
 
+        $list = "";
+        foreach ($result as $scoreOutput) {
+
+            $list .= "<div class='py-1 m-5 bg-[#fbd158]'>
+            <div class='flex gap-10 m-3 w-l'>
+                <p class='align-self-center'>Naam: $scoreOutput->name | Score: $scoreOutput->score</p>
+                <div>
+                    <button class='bg-[#fbede2] py-3 w-20 rounded-md'>Edit</button>
+                    <button class='bg-[#fbede2] py-3 w-20 rounded-md'>Delete</button>
+                </div>
+            </div>
+        </div>";
+        }
+
+
+        $data = [
+            'score' => $list,
+        ];
+
+        return view('scores', $data);
+    }
+
+    public function add()
+    {
         return view('addscore');
     }
 
