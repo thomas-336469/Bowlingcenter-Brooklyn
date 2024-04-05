@@ -15,40 +15,40 @@ class ScoreSeeder extends Seeder
     {
         Score::insert([
             'reservation_id' => 1,
-            'name' => 'Tommy',
-            'score' => '10',
+            'name' => 'John Doe',
+            'score' => '47',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         Score::insert([
             'reservation_id' => 1,
-            'name' => 'Kimberly',
-            'score' => '74',
+            'name' => 'Alice Bouwman',
+            'score' => '51',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         Score::insert([
             'reservation_id' => 1,
-            'name' => 'Sjaak',
-            'score' => '91',
+            'name' => 'Bob Brown',
+            'score' => '39',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         Score::insert([
             'reservation_id' => 1,
-            'name' => 'Jolanda',
-            'score' => '45',
+            'name' => 'Jaap Jansen',
+            'score' => '49',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         Score::insert([
             'reservation_id' => 1,
-            'name' => 'Henk',
-            'score' => '23',
+            'name' => 'Tim Hofman',
+            'score' => '93',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
