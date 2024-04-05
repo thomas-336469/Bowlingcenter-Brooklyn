@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Alley;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\WorkerReservation;
 use App\Models\Rate;
-use App\Models\Option;
 use App\Models\Alley;
 use App\Models\Option;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
