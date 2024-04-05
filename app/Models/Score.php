@@ -23,6 +23,7 @@ class Score extends Model
     public function getScores($id)
     {
         return $this->select(
+            'id',
             'reservation_id',
             'name',
             'score',
