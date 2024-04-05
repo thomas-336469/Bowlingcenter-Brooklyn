@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'AdminAccount',
             'email' => 'admin@bowling.com',
             'phone' => '123456789',
-            'role' => '1',
+            'role_id' => '1',
             'password' => bcrypt('admin123'),
         ]);
     }
