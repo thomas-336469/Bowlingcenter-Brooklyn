@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Option;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\UserReservation;
+use Illuminate\Support\Facades\Log;
 
 class UserReservationController extends Controller
 {
@@ -12,59 +14,47 @@ class UserReservationController extends Controller
     {
         $reservations = UserReservation::all();
 
-        return view('UserReservation.index', compact('reservations'));
+        return view('UserReservation.index', ['reservations' => $reservations]);
     }
 
     public function create()
     {
-        return view('UserReservation.create');
+        $options = Option::all();
+        return view('UserReservation.create', ['options' => $options]);
     }
 
     public function store(Request $request)
-    {
+    {        
         $request->validate([
-            'option' => 'required|string',
-            'date' => 'required|date',
-            'duration' => 'required|integer',
-            'amount_of_people' => 'required|integer',
-        ]);
-
-        UserReservation::create($request->all());
-        
-        return redirect()->route('reservations.index')
-            ->with('success', 'UserReservation created successfully.');
-    }
-
-    public function show(UserReservation $UserReservation)
-    {
-        return view('UserReservation.show', compact('UserReservation'));
-    }
-
-    public function edit(UserReservation $UserReservation)
-    {
-        return view('UserReservation.edit', compact('UserReservation'));
-    }
-
-    public function update(Request $request, UserReservation $UserReservation)
-    {
-        $request->validate([
-            'option' => 'required',
+            'option_id' => 'required',
             'date' => 'required',
             'duration' => 'required',
             'amount_of_people' => 'required',
+            'amount_of_children' => 'required'
+        ]);
+    
+        $request->merge([
+            'total_cost' => 0,
+            'alley_id' => 1,
+            'rate_id' => 1
+        ]);
+    
+        UserReservation::create([
+            'user_id' => auth()->user()->id,
+            'option_id' => $request->option_id,
+            'rate_id' => $request->rate_id,
+            'alley_id' => $request->alley_id,
+            'date' => $request->date,
+            'duration' => $request->duration,
+            'total_cost' => $request->total_cost,
+            'amount_of_people' => $request->amount_of_people,
+            'amount_of_children' => $request->amount_of_children
         ]);
 
-        $UserReservation->update($request->all());
+        Log::info('2nd Store method called', ['request' => $request->all()]);
 
-        return redirect()->route('UserReservation.index')
-            ->with('success', 'UserReservation updated successfully');
-    }
+        return redirect()->route('reservations.index')->with('success', 'Reservation created successfully');
 
-    public function destroy(UserReservation $UserReservation)
-    {
-        $UserReservation->delete();
-
-        return redirect()->route('UserReservation.index')
-            ->with('success', 'UserReservation deleted successfully');
+        Log::info('3rd Store method called', ['request' => $request->all()]);
     }
 }
