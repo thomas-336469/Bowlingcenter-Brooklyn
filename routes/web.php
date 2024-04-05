@@ -12,13 +12,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/scores', function () {
-    return view('scores');
-})->middleware(['auth', 'verified'])->name('scores');
-
-
-Route::get('/addscore', [ScoreController::class, 'index',])->middleware(['auth', 'verified'])->name('addscore.index');
-
+Route::get('/scores', [ScoreController::class, 'index'])->middleware(['auth', 'verified'])->name('scores');
+Route::get('/addscore', [ScoreController::class, 'add'])->middleware(['auth', 'verified'])->name('addscore.index');
 Route::post('/addscore', [ScoreController::class, 'store'])->middleware(['auth', 'verified'])->name('addscore.store');
 
 
