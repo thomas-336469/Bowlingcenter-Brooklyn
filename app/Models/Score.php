@@ -32,4 +32,14 @@ class Score extends Model
             ->where('reservation_id', $id)
             ->get();
     }
+
+    public function getReservationId($user_id)
+    {
+        return $this->select(
+            'id',
+        )
+            ->from('user_reservations')
+            ->where('user_id', $user_id)
+            ->get();
+    }
 }

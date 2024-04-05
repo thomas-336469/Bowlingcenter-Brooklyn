@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Score;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class ScoreController extends Controller
 {
@@ -19,8 +17,9 @@ class ScoreController extends Controller
 
     public function index()
     {
-        $reservation_id = 1;
-        $result = $this->scoreModel->getScores($reservation_id);
+        $user_id = auth()->user()->id;
+        $reservation_id = $this->scoreModel->getReservationId($user_id);
+        $result = $this->scoreModel->getScores($reservation_id[0]->id);
 
         $data = [
             'score' => $result,
