@@ -5,6 +5,9 @@ use App\Http\Controllers\ScoreController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OptionsController;
+use App\Http\Controllers\WorkerReservationController;
+use App\Models\Option;
+use App\Models\WorkerReservation;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +36,28 @@ Route::post('/addscore', [ScoreController::class, 'store'])->middleware(['auth',
 Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->middleware(['auth', 'verified'])->name('scores.delete');
 Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
 Route::put('/scores/{id}/edit', [ScoreController::class, 'update'])->middleware(['auth', 'verified'])->name('scores.update');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/options', [AdminOptionsController::class, 'index'])->name('admin.options.index');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::delete('/worker/reservations/{reservation}/delete', [WorkerReservationController::class, 'delete'])->name('worker.reservations.delete');
+    Route::get('/worker/reservations', [WorkerReservationController::class, 'index'])->name('worker.reservations.index');
+    Route::post('/worker/reservations/store', [WorkerReservationController::class, 'store'])->name('worker.reservations.store');
+    Route::get('/worker/reservations/create', function () {
+        $options = Option::all();
+        return view('workerreservation.create', ['options' => $options]);
+    })->name('worker.reservations.create');
+    Route::get('/worker/reservations/{reservation}/update', function () {
+        $reservation = WorkerReservation::find(request()->reservation);
+        $options = Option::all();
+        return view('workerreservation.update', ['reservation' => $reservation, 'options' => $options]);
+    })->name('worker.reservations.update');
+    Route::post('/worker/reservations/{reservation}/update', [WorkerReservationController::class, 'update'])->name('worker.reservations.update');
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
