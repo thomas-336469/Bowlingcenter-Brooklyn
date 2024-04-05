@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('rate_id')->constrained();
             $table->foreignId('alley_id')->constrained();
-            $table->foreignId('option_id')->constrained();
+            $table->foreignId('option_id')->nullable()->constrained();
             $table->dateTime('date');
             $table->integer('duration');
             $table->decimal('total_cost', 5, 2);
