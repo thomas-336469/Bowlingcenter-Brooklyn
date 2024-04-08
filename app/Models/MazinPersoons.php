@@ -13,6 +13,7 @@ class MazinPersoons extends Model
 
 
     protected $fillable = [
+        'Id',
         'TypePersoonId',
         'Voornaam',
         'Tussenvoegsel',
