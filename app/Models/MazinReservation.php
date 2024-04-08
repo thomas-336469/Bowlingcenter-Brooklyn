@@ -27,4 +27,9 @@ class MazinReservation extends Model
         'AantalVolwassen',
         'AantalKinderen',
     ];
+
+    public function person()
+    {
+        return $this->belongsTo(MazinPersoons::class, 'persoons_id');
+    }
 }
