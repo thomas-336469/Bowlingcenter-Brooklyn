@@ -12,6 +12,7 @@ class MazinTypePersoons extends Model
     protected $table = '_type_persoons';
 
     protected $fillable = [
+        'Id',
         'Naam',
     ];
 
