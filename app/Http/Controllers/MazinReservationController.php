@@ -10,9 +10,12 @@ class MazinReservationController extends Controller
 {
     public function index()
     {
-        $mazinReservations = MazinReservation::all();
+        $filterDate = request('filter_date'); // Get the entered date from the index.blade.php file
+        $mazinReservations = MazinReservation::when($filterDate, function ($query, $filterDate) {
+            return $query->whereDate('datum', $filterDate);
+        })->get(); // Get all the reservations from the database that match the entered date
 
-        return view('MazinReservation.index', compact('mazinReservations'));
+        return view('mazinReservation.index', compact('mazinReservations'));
     }
 
     public function edit($id)
