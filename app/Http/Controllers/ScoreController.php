@@ -33,8 +33,16 @@ class ScoreController extends Controller
         return view('addscore');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'score' => 'required|integer|between:0,300', // Set maximum score limit to 300
+            'date' => 'required|date',
+        ], [
+            'score.between' => 'Het aantal punten is niet geldig, voer een waarde in kleiner of gelijk aan 300 in.',
+        ]);
+
         Score::create([
             'reservation_id' => request('reservation_id'),
             'name' => request('name'),
@@ -64,6 +72,15 @@ class ScoreController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'score' => 'required|integer|between:0,300', // Set maximum score limit to 300
+            'date' => 'required|date',
+        ], [
+            'score.between' => 'Het aantal punten is niet geldig, voer een waarde in kleiner of gelijk aan 300 in.',
+        ]);
+
         // Find the score by its ID
         $score = Score::findOrFail($id);
 
