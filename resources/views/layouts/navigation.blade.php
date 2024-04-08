@@ -25,7 +25,7 @@
                     </x-nav-link> -->
                 <!-- Add a link to the reservations mazin read page -->
                     <x-nav-link :href="route('mazinReservation.index')" :active="request()->routeIs('mazin-reservations.index')">
-                        {{ __('Mazin Reservations') }}
+                        {{ __('Overzicht Reservations') }}
                     </x-nav-link>
                 <!-- Add a link to the reservations baan read page -->
                     <x-nav-link :href="route('baanReservation.index')" :active="request()->routeIs('baan-reservations.index')">

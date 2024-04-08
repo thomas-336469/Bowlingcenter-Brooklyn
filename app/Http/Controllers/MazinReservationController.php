@@ -18,7 +18,7 @@ class MazinReservationController extends Controller
         })->get(); // Get all the reservations from the database that match the entered date
         $user = Auth::user(); // Get the authenticated user
 
-        return view('mazinReservation.index', compact('mazinReservations', 'user', 'UserReservations'));
+        return view('mazinReservation.index', compact('mazinReservations', 'user'));
     }
 
     public function edit($id)
