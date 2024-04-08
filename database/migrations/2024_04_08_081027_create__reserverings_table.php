@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('OpeningstijdId');
             $table->unsignedBigInteger('TariefId');
             $table->unsignedBigInteger('BaanId');
-            $table->unsignedBigInteger('PakketOptieId');
+            $table->unsignedBigInteger('PakketOptieId')->nullable();
             $table->unsignedBigInteger('ReserveringStatusID');
             $table->date('datum');
             $table->integer('AantalUren');
