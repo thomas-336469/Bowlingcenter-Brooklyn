@@ -24,7 +24,7 @@ return new class extends Migration
             $table->time('BeginTijd');
             $table->time('EindTijd');
             $table->integer('AantalVolwassen');
-            $table->integer('AantalKinderen');
+            $table->integer('AantalKinderen')->nullable();
             $table->timestamps();
         });
     }
