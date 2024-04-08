@@ -27,15 +27,16 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'Worker']);
         Role::create(['name' => 'User']);
 
-        // Create an admin account
-        User::factory()->create([
+        // Create an admin account if it doesn't exist
+        if (!User::where('email', 'admin@bowling.com')->exists()) {
+            User::factory()->create([
             'name' => 'AdminAccount',
             'email' => 'admin@bowling.com',
             'phone' => '123456789',
             'role_id' => '1',
             'password' => bcrypt('admin123'),
-        ]);
-
+            ]);
+        }
         // Create a test rate
         Rate::create([
             'weekday' => 'Monday',
