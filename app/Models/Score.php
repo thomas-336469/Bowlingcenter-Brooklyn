@@ -13,6 +13,7 @@ class Score extends Model
         'reservation_id',
         'name',
         'score',
+        'date',
     ];
 
     public function userReservation()
@@ -27,9 +28,12 @@ class Score extends Model
             'reservation_id',
             'name',
             'score',
+            'date',
+            'created_at',
         )
             ->from('scores')
             ->where('reservation_id', $id)
+            ->orderBy('score', 'desc')
             ->get();
     }
 

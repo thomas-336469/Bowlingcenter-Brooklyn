@@ -39,6 +39,7 @@ class ScoreController extends Controller
             'reservation_id' => request('reservation_id'),
             'name' => request('name'),
             'score' => request('score'),
+            'date' => request('date'),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -69,6 +70,7 @@ class ScoreController extends Controller
         // Update the score attributes with the new values
         $score->name = $request->input('name');
         $score->score = $request->input('score');
+        $score->date = $request->input('date');
         // You may update other attributes as needed
 
         // Save the updated score
@@ -76,5 +78,14 @@ class ScoreController extends Controller
 
         // Redirect back to the scores page with a success message
         return redirect()->route('scores')->with('success', 'Score updated successfully.');
+    }
+
+    public function filterByDate(Request $request)
+    {
+        $filterDate = $request->input('filter_date');
+
+        $scores = Score::whereDate('created_at', $filterDate)->get();
+
+        return view('scores', compact('scores'));
     }
 }
