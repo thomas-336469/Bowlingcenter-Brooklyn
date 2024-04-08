@@ -5,6 +5,17 @@
             {{ __('Edit Score') }}
         </h2>
     </x-slot>
+    @if ($errors->any())
+        <div id="error-message"
+            class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-md">
+            {{  $errors->first() }}
+        </div>
+        <script>
+            setTimeout(function() {
+                document.getElementById('error-message').remove();
+            }, 5000);
+        </script>
+    @endif
 
     <!-- Main Content Section -->
     <div class="py-12">
@@ -17,7 +28,7 @@
                     <form method="POST" action="{{ route('scores.update', $score->id) }}">
                         @csrf
                         @method('PUT')
-
+                        
                         <!-- Name Field -->
                         <div class="mt-4">
                             <label for="name" class="block font-medium text-sm text-gray-700">Naam:</label>
@@ -27,7 +38,7 @@
                         <!-- Score Field -->
                         <div class="mt-4">
                             <label for="score" class="block font-medium text-sm text-gray-700">Score</label>
-                            <input id="score" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="number" name="score" value="{{ old('score', $score->score) }}" required />
+                            <input id="score" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="number" name="score" max="300" value="{{ old('score', $score->score) }}" required />
                         </div>
 
                         <!-- Date Field -->
