@@ -11,16 +11,14 @@ class MazinReservationController extends Controller
     public function index()
     {
         $mazinReservations = MazinReservation::all();
-        $mazinPersoons = MazinPersoons::all();
 
-        return view('MazinReservation.index', compact('mazinReservations', 'mazinPersoons'));
+        return view('MazinReservation.index', compact('mazinReservations'));
     }
 
     public function edit($id)
     {
         $mazinReservation = MazinReservation::findOrFail($id);
-        $mazinPersoons = MazinPersoons::all();
 
-        return view('MazinReservation.edit', compact('mazinReservation', 'mazinPersoons'));
+        return view('MazinReservation.edit', compact('mazinReservation'));
     }
 }
