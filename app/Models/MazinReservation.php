@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MazinReservation extends Model
 {
     use HasFactory;
+
+    protected $table = '_reserverings';
 }
