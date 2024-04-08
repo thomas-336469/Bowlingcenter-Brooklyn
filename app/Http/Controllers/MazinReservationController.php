@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MazinReservation;
+use App\Models\MazinPersoons;
 
 class MazinReservationController extends Controller
 {
     public function index()
     {
-        $mazinReservation = MazinReservation::all();
+        $mazinReservations = MazinReservation::all();
+        $mazinPersoons = MazinPersoons::all();
 
-        return view('MazinReservation.index', compact('mazinReservation'));
+        return view('MazinReservation.index', compact('mazinReservations', 'mazinPersoons'));    
     }
 }
