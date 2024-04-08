@@ -10,4 +10,21 @@ class MazinReservation extends Model
     use HasFactory;
 
     protected $table = '_reserverings';
+
+
+    protected $fillable = [
+        'Reserveringsnummer',
+        'PersoonId',
+        'OpeningstijdId',
+        'TariefId',
+        'BaanId',
+        'PakketOptieId',
+        'ReserveringStatusID',
+        'datum',
+        'AantalUren',
+        'BeginTijd',
+        'EindTijd',
+        'AantalVolwassen',
+        'AantalKinderen',
+    ];
 }
