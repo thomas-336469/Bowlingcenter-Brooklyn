@@ -13,6 +13,7 @@ class MazinReservation extends Model
 
 
     protected $fillable = [
+        'Id',
         'Reserveringsnummer',
         'PersoonId',
         'OpeningstijdId',
@@ -30,6 +31,6 @@ class MazinReservation extends Model
 
     public function person()
     {
-        return $this->belongsTo(MazinPersoons::class, 'persoons_id');
+        return $this->belongsTo(MazinPersoons::class, 'PersoonId');
     }
 }
