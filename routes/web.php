@@ -2,14 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScoreController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OptionsController;
 use App\Http\Controllers\WorkerReservationController;
 use App\Models\Option;
 use App\Models\WorkerReservation;
-use App\Http\Middleware\AdminMiddleware;
-use Illuminate\Routing\Middleware;
 use App\Http\Controllers\UserReservationController;
 
 Route::get('/', function () {
@@ -39,6 +36,7 @@ Route::post('/addscore', [ScoreController::class, 'store'])->middleware(['auth',
 Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->middleware(['auth', 'verified'])->name('scores.delete');
 Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
 Route::put('/scores/{id}/edit', [ScoreController::class, 'update'])->middleware(['auth', 'verified'])->name('scores.update');
+Route::get('/scores/filter', [ScoreController::class, 'filterByDate'])->name('scores.filterByDate');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::delete('/worker/reservations/{reservation}/delete', [WorkerReservationController::class, 'delete'])->name('worker.reservations.delete');
@@ -56,8 +54,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/worker/reservations/{reservation}/update', [WorkerReservationController::class, 'update'])->name('worker.reservations.update');
 });
 
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/reservations', [UserReservationController::class, 'index'])->name('reservations.index');
     Route::get('/reservations/create', [UserReservationController::class, 'create'])->name('reservations.create');
@@ -70,8 +66,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/scores/filter', [ScoreController::class, 'filterByDate'])->name('scores.filterByDate');
-
-
-require __DIR__ . '/auth.php';
 require __DIR__ . '/auth.php';

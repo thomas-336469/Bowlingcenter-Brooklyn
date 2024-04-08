@@ -31,13 +31,10 @@
     @endif
 
     <div class="py-12">
-
-        <form action="{{ route('scores.filterByDate') }}" method="GET">
-            <label for="filter_date" class="block text-sm font-medium text-gray-700">Filter by Date:</label>
+        <form id="filterForm" action="{{ route('scores.filterByDate') }}" method="GET">
             <input type="date" name="filter_date" id="filter_date"
-                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            <button type="submit"
-                class="mt-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Filter</button>
+                class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block max-w-7xl mx-auto sm:px-6 lg:px-8 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                onchange="submitForm()">
         </form>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -99,4 +96,10 @@
         <a href="/addscore" class="bg-dark hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Add new
             score</a>
     </div>
+
+    <script>
+        function submitForm() {
+            document.getElementById('filterForm').submit();
+        }
+    </script>
 </x-app-layout>

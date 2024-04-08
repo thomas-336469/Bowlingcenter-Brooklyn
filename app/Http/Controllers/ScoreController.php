@@ -83,9 +83,23 @@ class ScoreController extends Controller
     public function filterByDate(Request $request)
     {
         $filterDate = $request->input('filter_date');
+        $user_id = auth()->user()->id;
+        $reservation_id = $this->scoreModel->getReservationId($user_id);
 
-        $scores = Score::whereDate('created_at', $filterDate)->get();
+        $scores = $this->scoreModel
+            ->where('reservation_id', $reservation_id[0]->id)
+            ->whereDate('date', $filterDate)
+            ->orderBy('score', 'desc')
+            ->get();
 
-        return view('scores', compact('scores'));
+        if ($scores->isEmpty()) {
+            return redirect()->back()->with('error', 'Er is geen uitslag beschikbaar voor deze geselecteerde datum.');
+        }
+
+        $data = [
+            'score' => $scores,
+        ];
+
+        return view('scores', $data);
     }
 }
