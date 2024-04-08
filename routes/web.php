@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/reservations/$reservation/{id}/delete', [UserReservationController::class, 'destroy'])->name('reservations.destroy');
     Route::post('/reservations/store', [UserReservationController::class, 'store'])->name('reservations.store');
     Route::get('/mazinReservation', [MazinReservationController::class, 'index'])->name('mazinReservation.index');
+    Route::get('/mazinReservation/{id}/edit', [MazinReservationController::class, 'edit'])->name('mazinReservation.edit');
+    Route::patch('/mazinReservation/{id}', [MazinReservationController::class, 'update'])->name('mazinReservation.update');
+    Route::delete('/mazinReservation/{id}', [MazinReservationController::class, 'destroy'])->name('mazinReservation.destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
