@@ -17,8 +17,9 @@ class MazinReservationController extends Controller
             return $query->whereDate('datum', $filterDate);
         })->get(); // Get all the reservations from the database that match the entered date
         $user = Auth::user(); // Get the authenticated user
+        $UserReservations = MazinReservation::where('PersoonId', $user->id)->get(); // Get the reservations made by the user
 
-        return view('mazinReservation.index', compact('mazinReservations', 'user'));
+        return view('mazinReservation.index', compact('mazinReservations', 'user', 'UserReservations'));
     }
 
     public function edit($id)
