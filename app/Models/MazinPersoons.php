@@ -10,4 +10,24 @@ class MazinPersoons extends Model
     use HasFactory;
 
     protected $table = '_persoons';
+
+
+    protected $fillable = [
+        'TypePersoonId',
+        'Voornaam',
+        'Tussenvoegsel',
+        'Achternaam',
+        'Roepnaam',
+        'IsVolwassen',
+    ];
+
+    public function typePersoons()
+    {
+        return $this->belongsTo(MazinTypePersoons::class, 'type_persoons_id');
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(MazinReservation::class, 'persoons_id');
+    }
 }
