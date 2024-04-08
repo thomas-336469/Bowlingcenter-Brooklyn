@@ -10,6 +10,7 @@ use App\Models\MazinReservation;
 use App\Models\MazinPersoons;
 use App\Models\Option;
 use App\Models\Alley;
+use App\Models\MazinTypePersoons;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Queue\Worker;
@@ -283,6 +284,15 @@ class DatabaseSeeder extends Seeder
             'Achternaam' => 'Jamil',
             'Roepnaam' => 'Mazin',
             'IsVolwassen' => 1,
+        ]);
+        MazinTypePersoons::create([
+            'TypePersoon' => 'Klant',
+        ]);
+        MazinTypePersoons::create([
+            'TypePersoon' => 'Medewerker',
+        ]);
+        MazinTypePersoons::create([
+            'TypePersoon' => 'Gast',
         ]);
     }
 }
