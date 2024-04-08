@@ -10,10 +10,9 @@ class MazinReservation extends Model
     use HasFactory;
 
     protected $table = '_reserverings';
-
+    protected $primaryKey = 'BaanId';
 
     protected $fillable = [
-        'Id',
         'Reserveringsnummer',
         'PersoonId',
         'OpeningstijdId',

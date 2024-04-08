@@ -37,6 +37,7 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Volwassenen</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kinderen</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Baan</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wijzigen</th>
                             </tr>
                         </thead>
                         <!-- Table Body -->
@@ -54,6 +55,9 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->AantalVolwassen }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ is_null($mazinReservation->AantalKinderen) ? '-' : $mazinReservation->AantalKinderen }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->baan->Nummer }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="{{ route('baanReservation.edit', ['id' => $mazinReservation->BaanId]) }}">Edit</a>
+                                </td>
                                 <!-- Actions Column -->
 
                             </tr>

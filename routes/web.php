@@ -30,8 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/reservations/store', [UserReservationController::class, 'store'])->name('reservations.store');
     Route::get('/mazinReservation', [MazinReservationController::class, 'index'])->name('mazinReservation.index');
     Route::get('/baanReservation', [BaanReservationController::class, 'index'])->name('baanReservation.index');
-    Route::get('/baanReservation/$reservation/{id}/edit', [BaanReservationController::class, 'edit'])->name('baanReservation.edit');
-    Route::patch('/baanReservation/$reservation/{id}/update', [BaanReservationController::class, 'update'])->name('baanReservation.update');
+    
+    Route::get('/baanReservation/{id}/edit', [BaanReservationController::class, 'edit'])->name('baanReservation.edit');
+
+  
+Route::patch('/baanReservation/{id}/update', [BaanReservationController::class, 'update'])->name('baanReservation.update');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

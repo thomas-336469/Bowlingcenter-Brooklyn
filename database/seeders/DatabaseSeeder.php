@@ -257,7 +257,7 @@ class DatabaseSeeder extends Seeder
             'BaanId' => 6,
             'ReserveringStatusID' => 1,
             'Reserveringsnummer' => 2022122000004,
-            'datum' => '2022-12-27',
+            'datum' => '2022-12-19',
             'AantalUren' => 2,
             'BeginTijd' => '17:00:00',
             'EindTijd' => '19:00:00',
