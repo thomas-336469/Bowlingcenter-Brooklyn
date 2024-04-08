@@ -23,4 +23,9 @@ class Alley extends Model
     {
         return $this->hasMany(UserReservation::class);
     }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

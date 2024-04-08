@@ -23,4 +23,9 @@ class Reservation extends Model
     {
         return $this->belongsTo(Person::class);
     }
+
+    public function alley()
+    {
+        return $this->belongsTo(Alley::class);
+    }
 }
