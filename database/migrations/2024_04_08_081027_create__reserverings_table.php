@@ -12,7 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('_reserverings', function (Blueprint $table) {
-            $table->id();
+            $table->id('Reserveringsnummer');
+            $table->unsignedBigInteger('PersoonId');
+            $table->unsignedBigInteger('OpeningstijdId');
+            $table->unsignedBigInteger('TariefId');
+            $table->unsignedBigInteger('BaanId');
+            $table->unsignedBigInteger('PakketOptieId');
+            $table->unsignedBigInteger('ReserveringStatusID');
+            $table->date('datum');
+            $table->integer('AantalUren');
+            $table->time('BeginTijd');
+            $table->time('EindTijd');
+            $table->integer('AantalVolwassen');
+            $table->integer('AantalKinderen');
             $table->timestamps();
         });
     }
