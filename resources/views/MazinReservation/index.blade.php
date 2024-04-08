@@ -58,7 +58,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->EindTijd }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->AantalVolwassen }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{ is_null($mazinReservation->AantalKinderen) ? 'NULL' : $mazinReservation->AantalKinderen }}
+                                    {{ is_null($mazinReservation->AantalKinderen) ? '-' : $mazinReservation->AantalKinderen }}
                                 </td>
                                 <!-- Actions Column -->
 
