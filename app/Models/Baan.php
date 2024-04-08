@@ -9,7 +9,7 @@ class Baan extends Model
 {
     use HasFactory;
 
-    protected $table = '_baans';
+    protected $table = 'baans';
 
     protected $fillable = [
         'Id',
