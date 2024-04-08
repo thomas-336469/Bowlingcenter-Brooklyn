@@ -10,4 +10,8 @@ class MazinTypePersoons extends Model
     use HasFactory;
 
     protected $table = '_type_persoons';
+
+    protected $fillable = [
+        'Naam',
+    ];
 }
