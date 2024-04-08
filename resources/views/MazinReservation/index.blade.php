@@ -30,19 +30,21 @@
                         <!-- Table Body -->
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($mazinReservations as $mazinReservation)
-                                <tr>
-                                    @foreach ($mazinPersoons as $mazinPersoon)
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinPersoon->naam }}</td>
-                                    @endforeach
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->datum }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->AantalUren }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->Begintijd }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->Eindtijd }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->AantalVolwassen }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->AantalKinderen }}</td>
-                                    <!-- Actions Column -->
-                                    
-                                </tr>
+                            <tr>
+
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->person->Voornaam }}</td>
+
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->datum }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->AantalUren }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->BeginTijd }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->EindTijd }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->AantalVolwassen }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    {{ is_null($mazinReservation->AantalKinderen) ? 'NULL' : $mazinReservation->AantalKinderen }}
+                                </td>
+                                <!-- Actions Column -->
+
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
