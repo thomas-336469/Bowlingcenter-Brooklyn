@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\WorkerReservation;
 use App\Models\Rate;
 use App\Models\MazinReservation;
+use App\Models\MazinPersoons;
 use App\Models\Option;
 use App\Models\Alley;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -247,6 +248,41 @@ class DatabaseSeeder extends Seeder
             'BeginTijd' => '10:00:00',
             'EindTijd' => '12:00:00',
             'AantalVolwassen' => 2,
+        ]);
+        MazinPersoons::create([
+            'TypePersoonId' => 1,
+            'Voornaam' => 'Mazin',
+            'Achternaam' => 'Jamil',
+            'Roepnaam' => 'Mazin',
+            'IsVolwassen' => 1,
+        ]);
+        MazinPersoons::create([
+            'TypePersoonId' => 1,
+            'Voornaam' => 'Arjan',
+            'Achternaam' => 'Jamil',
+            'Roepnaam' => 'Mazin',
+            'IsVolwassen' => 1,
+        ]);
+        MazinPersoons::create([
+            'TypePersoonId' => 1,
+            'Voornaam' => 'Hans',
+            'Achternaam' => 'Jamil',
+            'Roepnaam' => 'Mazin',
+            'IsVolwassen' => 1,
+        ]);
+        MazinPersoons::create([
+            'TypePersoonId' => 1,
+            'Voornaam' => 'Dennis',
+            'Achternaam' => 'Jamil',
+            'Roepnaam' => 'Mazin',
+            'IsVolwassen' => 1,
+        ]);
+        MazinPersoons::create([
+            'TypePersoonId' => 2,
+            'Voornaam' => 'Wilco',
+            'Achternaam' => 'Jamil',
+            'Roepnaam' => 'Mazin',
+            'IsVolwassen' => 1,
         ]);
     }
 }
