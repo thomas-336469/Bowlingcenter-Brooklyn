@@ -33,4 +33,9 @@ class MazinReservation extends Model
     {
         return $this->belongsTo(MazinPersoons::class, 'PersoonId');
     }
+
+    public function baan()
+    {
+        return $this->belongsTo(Baan::class, 'BaanId');
+    }
 }
