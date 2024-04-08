@@ -20,11 +20,4 @@ class MazinReservationController extends Controller
 
         return view('mazinReservation.index', compact('mazinReservations', 'user'));
     }
-
-    public function edit($id)
-    {
-        $mazinReservation = MazinReservation::findOrFail($id);
-
-        return view('MazinReservation.edit', compact('mazinReservation'));
-    }
 }
