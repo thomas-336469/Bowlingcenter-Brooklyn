@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\MazinReservation;
 use App\Models\MazinPersoons;
+use App\Models\MazinTypePersoons;
+use Illuminate\Support\Facades\Auth;
 
 class MazinReservationController extends Controller
 {
@@ -14,8 +16,9 @@ class MazinReservationController extends Controller
         $mazinReservations = MazinReservation::when($filterDate, function ($query, $filterDate) {
             return $query->whereDate('datum', $filterDate);
         })->get(); // Get all the reservations from the database that match the entered date
+        $user = Auth::user(); // Get the authenticated user
 
-        return view('mazinReservation.index', compact('mazinReservations'));
+        return view('mazinReservation.index', compact('mazinReservations', 'user'));
     }
 
     public function edit($id)
