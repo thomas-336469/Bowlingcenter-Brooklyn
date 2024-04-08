@@ -202,7 +202,7 @@ class DatabaseSeeder extends Seeder
             'BaanId' => 1,
             'PakketOptieId' => 1,
             'ReserveringStatusID' => 1,
-            'Reserveringsnummer' => 2022122000001,
+            'Reserveringsnummer' => 2022122000003,
             'datum' => '2022-01-01',
             'AantalUren' => 2,
             'BeginTijd' => '10:00:00',
@@ -216,7 +216,7 @@ class DatabaseSeeder extends Seeder
             'BaanId' => 1,
             'PakketOptieId' => 1,
             'ReserveringStatusID' => 1,
-            'Reserveringsnummer' => 2022122000001,
+            'Reserveringsnummer' => 2022122000004,
             'datum' => '2022-01-01',
             'AantalUren' => 2,
             'BeginTijd' => '10:00:00',
@@ -230,7 +230,7 @@ class DatabaseSeeder extends Seeder
             'BaanId' => 1,
             'PakketOptieId' => 1,
             'ReserveringStatusID' => 1,
-            'Reserveringsnummer' => 2022122000001,
+            'Reserveringsnummer' => 2022122000005,
             'datum' => '2022-01-01',
             'AantalUren' => 2,
             'BeginTijd' => '10:00:00',
@@ -244,12 +244,21 @@ class DatabaseSeeder extends Seeder
             'BaanId' => 1,
             'PakketOptieId' => 1,
             'ReserveringStatusID' => 1,
-            'Reserveringsnummer' => 2022122000001,
+            'Reserveringsnummer' => 2022122000006,
             'datum' => '2022-01-01',
             'AantalUren' => 2,
             'BeginTijd' => '10:00:00',
             'EindTijd' => '12:00:00',
             'AantalVolwassen' => 2,
+        ]);
+        MazinTypePersoons::create([
+            'Naam' => 'Klant',
+        ]);
+        MazinTypePersoons::create([
+            'Naam' => 'Medewerker',
+        ]);
+        MazinTypePersoons::create([
+            'Naam' => 'Gast',
         ]);
         MazinPersoons::create([
             'TypePersoonId' => 1,
@@ -285,15 +294,6 @@ class DatabaseSeeder extends Seeder
             'Achternaam' => 'Jamil',
             'Roepnaam' => 'Mazin',
             'IsVolwassen' => 1,
-        ]);
-        MazinTypePersoons::create([
-            'TypePersoon' => 'Klant',
-        ]);
-        MazinTypePersoons::create([
-            'TypePersoon' => 'Medewerker',
-        ]);
-        MazinTypePersoons::create([
-            'TypePersoon' => 'Gast',
         ]);
     }
 }
