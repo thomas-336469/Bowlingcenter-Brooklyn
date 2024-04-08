@@ -16,16 +16,16 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 <!-- Add a link to the reservations index page -->
-                    <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
+                    <!-- <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
                         {{ __('Reservations') }}
-                    </x-nav-link>
+                    </x-nav-link> -->
                 <!-- Add a link to the reservations create page -->
-                    <x-nav-link :href="route('reservations.create')" :active="request()->routeIs('reservations.create')">
+                    <!-- <x-nav-link :href="route('reservations.create')" :active="request()->routeIs('reservations.create')">
                         {{ __('Create Reservation') }}
-                    </x-nav-link>
+                    </x-nav-link> -->
                 <!-- Add a link to the reservations mazin read page -->
                     <x-nav-link :href="route('mazinReservation.index')" :active="request()->routeIs('mazin-reservations.index')">
-                        {{ __('Mazin Reservations') }}
+                        {{ __('Reservations') }}
                     </x-nav-link>
                     <!-- Conditionally show the link for users with an admin role -->
                     @if(auth()->user()->role_id === 1)
