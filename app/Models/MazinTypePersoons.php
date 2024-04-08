@@ -14,4 +14,9 @@ class MazinTypePersoons extends Model
     protected $fillable = [
         'Naam',
     ];
+
+    public function persons()
+    {
+        return $this->hasMany(MazinPersoons::class, 'type_persoons_id');
+    }
 }
