@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\AdminOptionsController;
 use App\Http\Controllers\WorkerReservationController;
 use App\Models\Option;
+use App\Models\Reservation;
 use App\Models\WorkerReservation;
 
 Route::get('/', function () {
@@ -37,7 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/worker/reservations/{reservation}/update', [WorkerReservationController::class, 'update'])->name('worker.reservations.update');
 });
 
-
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations');
+Route::get('/reservations/filter', [ReservationController::class, 'filter'])->name('reservations.filter');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
