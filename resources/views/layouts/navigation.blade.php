@@ -23,6 +23,10 @@
                     <x-nav-link :href="route('reservations.create')" :active="request()->routeIs('reservations.create')">
                         {{ __('Create Reservation') }}
                     </x-nav-link>
+                <!-- Add a link to the reservations mazin read page -->
+                    <x-nav-link :href="route('mazinReservation.index')" :active="request()->routeIs('mazin-reservations.index')">
+                        {{ __('Mazin Reservations') }}
+                    </x-nav-link>
                     <!-- Conditionally show the link for users with an admin role -->
                     @if(auth()->user()->role_id === 1)
                     <x-nav-link :href="route('admin.options.index')" :active="request()->routeIs('admin.options.index')">
