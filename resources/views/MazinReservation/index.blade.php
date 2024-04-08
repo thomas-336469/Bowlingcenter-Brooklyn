@@ -45,7 +45,9 @@
                         </thead>
                         <!-- Table Body -->
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($mazinReservations as $mazinReservation)
+                            @foreach ($mazinReservations->filter(function ($reservation) use ($user) {
+                            return $reservation->person->Voornaam == $user->name;
+                            }) as $mazinReservation)
                             <tr>
 
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->person->Voornaam }}</td>
