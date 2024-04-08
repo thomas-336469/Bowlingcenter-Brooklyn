@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('reservation_id')->constrained('user_reservations');
             $table->string('name');
             $table->integer('score')->nullable();
+            $table->date('date');
             $table->timestamps();
         });
     }
