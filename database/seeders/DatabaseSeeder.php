@@ -211,16 +211,15 @@ class DatabaseSeeder extends Seeder
         ]);
         MazinReservation::create([
             'PersoonId' => 1,
-            'OpeningstijdId' => 1,
+            'OpeningstijdId' => 2,
             'TariefId' => 1,
-            'BaanId' => 1,
-            'PakketOptieId' => 1,
+            'BaanId' => 6,
             'ReserveringStatusID' => 1,
             'Reserveringsnummer' => 2022122000004,
-            'datum' => '2022-01-01',
+            'datum' => '2022-12-27',
             'AantalUren' => 2,
-            'BeginTijd' => '10:00:00',
-            'EindTijd' => '12:00:00',
+            'BeginTijd' => '17:00:00',
+            'EindTijd' => '19:00:00',
             'AantalVolwassen' => 2,
         ]);
         MazinReservation::create([
