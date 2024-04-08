@@ -13,6 +13,22 @@
             <div class="bg-yellow-100 border border-gray-300 rounded-lg overflow-hidden shadow-sm">
                 <!-- Padding and White Background Inside Container -->
                 <div class="p-6 bg-white">
+                    <!-- Filter date -->
+                    <h1>Reservering van {{ $user->name }}</h1>
+                    <form method="GET" action="{{ route('mazinReservation.index') }}">
+                        <input type="date" name="filter_date" value="{{ request('filter_date') }}">
+                        <button type="submit" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">Toon Reserveringen</button>
+                    </form>
+
+                    <!-- If there is no info when date is filtered, give alert message and send them back -->
+                    @if($mazinReservations->isEmpty())
+                    <script>
+                        alert('Er is geen informatie over deze periode');
+                        // send the user back to the previous page with no input in the filter date field
+                        window.location.href = "{{ route('mazinReservation.index') }}";
+                    </script>
+                    @else
+
                     <!-- Table Section -->
                     <table class="min-w-full divide-y divide-gray-200">
                         <!-- Table Header -->
@@ -46,6 +62,7 @@
 
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div> <!-- End of Padding and White Background -->
