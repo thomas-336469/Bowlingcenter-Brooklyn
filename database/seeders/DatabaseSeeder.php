@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Alley;
 use App\Models\PersonType;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,16 @@ class DatabaseSeeder extends Seeder
         PersonType::create(['name' => 'Employee']);
         PersonType::create(['name' => 'Manager']);
         PersonType::create(['name' => 'Admin']);
+
+        // Create alleys
+        Alley::create(['alley_number' => 1, 'has_bumpers' => false]);
+        Alley::create(['alley_number' => 2, 'has_bumpers' => false]);
+        Alley::create(['alley_number' => 3, 'has_bumpers' => false]);
+        Alley::create(['alley_number' => 4, 'has_bumpers' => false]);
+        Alley::create(['alley_number' => 5, 'has_bumpers' => false]);
+        Alley::create(['alley_number' => 6, 'has_bumpers' => false]);
+        Alley::create(['alley_number' => 7, 'has_bumpers' => true]);
+        Alley::create(['alley_number' => 8, 'has_bumpers' => true]);
 
         // Define people
         $people = [
@@ -104,6 +115,7 @@ class DatabaseSeeder extends Seeder
                 'reservation_end_time' => '16:00:00',
                 'number_of_adults' => 4,
                 'number_of_children' => 2,
+                'alley_id' => 7,
             ],
             [
                 'person_id' => 2,
@@ -114,6 +126,7 @@ class DatabaseSeeder extends Seeder
                 'reservation_end_time' => '18:00:00',
                 'number_of_adults' => 4,
                 'number_of_children' => null,
+                'alley_id' => 2,
             ],
             [
                 'person_id' => 3,
@@ -124,6 +137,7 @@ class DatabaseSeeder extends Seeder
                 'reservation_end_time' => '18:00:00',
                 'number_of_adults' => 4,
                 'number_of_children' => null,
+                'alley_id' => 3,
             ],
             [
                 'person_id' => 1,
@@ -134,6 +148,7 @@ class DatabaseSeeder extends Seeder
                 'reservation_end_time' => '19:00:00',
                 'number_of_adults' => 2,
                 'number_of_children' => null,
+                'alley_id' => 8,
             ],
             [
                 'person_id' => 4,
@@ -144,6 +159,7 @@ class DatabaseSeeder extends Seeder
                 'reservation_end_time' => '15:00:00',
                 'number_of_adults' => 3,
                 'number_of_children' => null,
+                'alley_id' => 1,
             ],
             [
                 'person_id' => 5,
@@ -154,6 +170,7 @@ class DatabaseSeeder extends Seeder
                 'reservation_end_time' => '21:00:00',
                 'number_of_adults' => 2,
                 'number_of_children' => null,
+                'alley_id' => 1,
             ]
         ];
 

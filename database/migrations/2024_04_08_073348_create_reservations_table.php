@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('person_id')->constrained();
+            $table->foreignId('alley_id')->constrained();
             //$table->foreignId('option_id')->constrained(); Not needed
             //$table->foreignId('opening_id')->constrained(); Not needed
             //$table->foreignId('rate_id')->constrained(); Not needed
