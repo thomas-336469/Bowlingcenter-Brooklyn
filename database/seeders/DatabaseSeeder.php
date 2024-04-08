@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\WorkerReservation;
 use App\Models\Rate;
+use App\Models\MazinReservation;
 use App\Models\Option;
 use App\Models\Alley;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -160,6 +161,92 @@ class DatabaseSeeder extends Seeder
             'total_cost' => 10,
             'amount_of_people' => 2,
             'amount_of_children' => 0,
+        ]);
+
+        MazinReservation::create([
+            'PersoonId' => 1,
+            'OpeningstijdId' => 2,
+            'TariefId' => 1,
+            'BaanId' => 8,
+            'PakketOptieId' => 1,
+            'ReserveringStatusID' => 1,
+            'Reserveringsnummer' => 2022122000001,
+            'datum' => '2022-12-20',
+            'AantalUren' => 1,
+            'BeginTijd' => '15:00:00',
+            'EindTijd' => '16:00:00',
+            'AantalVolwassen' => 4,
+            'AantalKinderen' => 2,
+        ]);
+        MazinReservation::create([
+            'PersoonId' => 2,
+            'OpeningstijdId' => 2,
+            'TariefId' => 1,
+            'BaanId' => 2,
+            'PakketOptieId' => 3,
+            'ReserveringStatusID' => 1,
+            'Reserveringsnummer' => 2022122000002,
+            'datum' => '2022-12-20',
+            'AantalUren' => 1,
+            'BeginTijd' => '17:00:00',
+            'EindTijd' => '18:00:00',
+            'AantalVolwassen' => 4,
+        ]);
+        MazinReservation::create([
+            'PersoonId' => 3,
+            'OpeningstijdId' => 1,
+            'TariefId' => 1,
+            'BaanId' => 1,
+            'PakketOptieId' => 1,
+            'ReserveringStatusID' => 1,
+            'Reserveringsnummer' => 2022122000001,
+            'datum' => '2022-01-01',
+            'AantalUren' => 2,
+            'BeginTijd' => '10:00:00',
+            'EindTijd' => '12:00:00',
+            'AantalVolwassen' => 2,
+        ]);
+        MazinReservation::create([
+            'PersoonId' => 1,
+            'OpeningstijdId' => 1,
+            'TariefId' => 1,
+            'BaanId' => 1,
+            'PakketOptieId' => 1,
+            'ReserveringStatusID' => 1,
+            'Reserveringsnummer' => 2022122000001,
+            'datum' => '2022-01-01',
+            'AantalUren' => 2,
+            'BeginTijd' => '10:00:00',
+            'EindTijd' => '12:00:00',
+            'AantalVolwassen' => 2,
+        ]);
+        MazinReservation::create([
+            'PersoonId' => 4,
+            'OpeningstijdId' => 1,
+            'TariefId' => 1,
+            'BaanId' => 1,
+            'PakketOptieId' => 1,
+            'ReserveringStatusID' => 1,
+            'Reserveringsnummer' => 2022122000001,
+            'datum' => '2022-01-01',
+            'AantalUren' => 2,
+            'BeginTijd' => '10:00:00',
+            'EindTijd' => '12:00:00',
+            'AantalVolwassen' => 2,
+        ]);
+        MazinReservation::create([
+            'PersoonId' => 5,
+            'OpeningstijdId' => 1,
+            'TariefId' => 1,
+            'BaanId' => 1,
+            'PakketOptieId' => 1,
+            'ReserveringStatusID' => 1,
+            'Reserveringsnummer' => 2022122000001,
+            'datum' => '2022-01-01',
+            'AantalUren' => 2,
+            'BeginTijd' => '10:00:00',
+            'EindTijd' => '12:00:00',
+            'AantalVolwassen' => 2,
         ]);
     }
 }
