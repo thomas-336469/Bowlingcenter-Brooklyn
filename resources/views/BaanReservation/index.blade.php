@@ -15,6 +15,11 @@
                 <div class="p-6 bg-white">
                     <!-- Filter date -->
                     <h1>Reservering van {{ $user->name }}</h1>
+                    @if(isset($success))
+                    <div class="alert alert-success text-green-500">
+                        {{ $success }}
+                    </div>
+                    @endif
 
                     <!-- If there is no info when date is filtered, give alert message and send them back -->
                     @if($mazinReservations->isEmpty())
