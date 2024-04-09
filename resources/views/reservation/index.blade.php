@@ -17,9 +17,12 @@
                 </a>
             </form>
         </div>
-        @foreach($errors->all() as $error)
+        @if(isset($error))
         <div class="text-red-600 text-md">{{ $error }}</div>
-        @endforeach
+        @endif
+        @if(isset($message))
+        <div class="text-green-600 text-md">{{ $message }}</div>
+        @endif
 
         <table class="table-auto w-full">
             <thead>

@@ -29,6 +29,10 @@ class ReservationController extends Controller
             ->get();
         $user = Person::find($this->person_id);
 
+        if ($reservations->count() === 0) {
+            return view('reservation.index', compact('reservations', 'user'))->with(['error' => 'No reservations found']);
+        }
+
         return view('reservation.index', compact('reservations', 'user'));
     }
 
@@ -47,12 +51,17 @@ class ReservationController extends Controller
             return redirect()->back()->withErrors(['The selected alley does not have bumpers']);
         }
 
-
-        //dd($reservation);
+        // Update the reservation
         $reservation->update([
             'alley_id' => $request->alley_id,
         ]);
 
-        return redirect()->route('reservations')->with('success', 'Reservation updated');
+        //get info for index page
+        $reservations = Reservation::where('person_id', $this->person_id)
+            ->orderBy('reservation_date', 'desc')
+            ->get();
+        $user = Person::find($this->person_id);
+
+        return view('reservation.index')->with(['reservations' => $reservations, 'user' => $user, 'message' => 'Reservation updated']);
     }
 }
