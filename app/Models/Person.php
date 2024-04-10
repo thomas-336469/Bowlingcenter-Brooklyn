@@ -5,23 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alley extends Model
+class Person extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'alley_number',
-        'has_bumpers',
+        'person_type_id',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'call_name',
+        'is_adult',
     ];
 
-    public function workerReservations()
+    public function personType()
     {
-        return $this->hasMany(WorkerReservation::class);
-    }
-
-    public function userReservations()
-    {
-        return $this->hasMany(UserReservation::class);
+        return $this->belongsTo(PersonType::class);
     }
 
     public function reservations()

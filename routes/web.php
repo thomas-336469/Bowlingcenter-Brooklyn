@@ -3,11 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScoreController;
 use App\Models\User;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OptionsController;
 use App\Http\Controllers\WorkerReservationController;
 use App\Models\Option;
+use App\Models\Reservation;
 use App\Models\WorkerReservation;
+use App\Models\Alley;
 use Illuminate\Routing\Middleware;
 use App\Http\Controllers\UserReservationController;
 
@@ -56,7 +59,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/worker/reservations/{reservation}/update', [WorkerReservationController::class, 'update'])->name('worker.reservations.update');
 });
 
-
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations');
+Route::get('/reservations/filter', [ReservationController::class, 'filter'])->name('reservations.filter');
+Route::get('/reservations/{reservation}/update', function () {
+    $reservation = Reservation::find(request()->reservation);
+    $alleys = Alley::all();
+    return view('reservation.update', ['reservation' => $reservation, 'alleys' => $alleys]);
+})->name('reservations.update');
+Route::post('/reservations/{reservation}/update', [ReservationController::class, 'update'])->name('reservations.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/reservations', [UserReservationController::class, 'index'])->name('reservations.index');
