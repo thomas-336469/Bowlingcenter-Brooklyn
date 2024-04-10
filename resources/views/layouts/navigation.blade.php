@@ -15,19 +15,19 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                <!-- Add a link to the reservations index page -->
+                    <!-- Add a link to the reservations index page -->
                     <!-- <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
                         {{ __('Reservations') }}
                     </x-nav-link> -->
-                <!-- Add a link to the reservations create page -->
+                    <!-- Add a link to the reservations create page -->
                     <!-- <x-nav-link :href="route('reservations.create')" :active="request()->routeIs('reservations.create')">
                         {{ __('Create Reservation') }}
                     </x-nav-link> -->
-                <!-- Add a link to the reservations mazin read page -->
-                    <x-nav-link :href="route('mazinReservation.index')" :active="request()->routeIs('mazin-reservations.index')">
+                    <!-- Add a link to the reservations index page -->
+                    <x-nav-link :href="route('Reservation.index')" :active="request()->routeIs('reservations.index')">
                         {{ __('Overzicht Reservations') }}
                     </x-nav-link>
-                <!-- Add a link to the reservations baan read page -->
+                    <!-- Add a link to the reservations baan read page -->
                     <x-nav-link :href="route('baanReservation.index')" :active="request()->routeIs('baan-reservations.index')">
                         {{ __('Baan Reservations') }}
                     </x-nav-link>

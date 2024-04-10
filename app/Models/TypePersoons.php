@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MazinTypePersoons extends Model
+class TypePersoons extends Model
 {
     use HasFactory;
 
@@ -18,6 +18,6 @@ class MazinTypePersoons extends Model
 
     public function persons()
     {
-        return $this->hasMany(MazinPersoons::class, 'type_persoons_id');
+        return $this->hasMany(Persoons::class, 'type_persoons_id');
     }
 }

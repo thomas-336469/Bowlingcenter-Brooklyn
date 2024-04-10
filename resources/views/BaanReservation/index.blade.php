@@ -14,7 +14,7 @@
                 <!-- Padding and White Background Inside Container -->
                 <div class="p-6 bg-white">
                     <!-- Filter date -->
-                    <h1>Reservering van {{ $user->name }}</h1>
+                    <h1 class="text-xl font-semibold mb-4">Reservering van {{ $user->name }}</h1>
                     @if(isset($success))
                     <div class="alert alert-success text-green-500">
                         {{ $success }}
@@ -23,6 +23,9 @@
 
                     <!-- If there is no info when date is filtered, give alert message and send them back -->
                     @if($mazinReservations->isEmpty())
+                    <div class="text-red-500 mt-4">
+                        <p>Er is geen informatie over deze periode.</p>
+                    </div>
                     <script>
                         alert('Er is geen informatie over deze periode');
                         // send the user back to the previous page with no input in the filter date field
@@ -31,45 +34,47 @@
                     @else
 
                     <!-- Table Section -->
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <!-- Table Header -->
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Voornaam</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tussenvoegsel</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Achternaam</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Datum</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Volwassenen</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kinderen</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Baan</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wijzigen</th>
-                            </tr>
-                        </thead>
-                        <!-- Table Body -->
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($mazinReservations->filter(function ($reservation) use ($user) {
-                            return $reservation->person->Voornaam == $user->name;
-                            }) as $mazinReservation)
-                            <tr>
+                    <div class="overflow-x-auto mt-4">
+                        <table class="min-w-full divide-y divide-gray-200 bg-blue-900 text-white">
+                            <!-- Table Header -->
+                            <thead class="bg-gray-800">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Voornaam</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Tussenvoegsel</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Achternaam</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Datum</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Volwassenen</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Kinderen</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Baan</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium tracking-wider">Wijzigen</th>
+                                </tr>
+                            </thead>
+                            <!-- Table Body -->
+                            <tbody class="bg-blue-800 divide-y divide-gray-200">
+                                @foreach ($mazinReservations->filter(function ($reservation) use ($user) {
+                                return $reservation->person->Voornaam == $user->name;
+                                }) as $mazinReservation)
+                                <tr>
 
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->person->Voornaam }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->person->Voornaam }}</td>
 
-                                <td class="px-6 py-4 whitespace-nowrap">{{ is_null($mazinReservation->person->Tussenvoegsel) ? '-' : $mazinReservation->person->Tussenvoegsel }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->person->Achternaam }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->datum }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->AantalVolwassen }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ is_null($mazinReservation->AantalKinderen) ? '-' : $mazinReservation->AantalKinderen }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->baan->Nummer }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="{{ route('baanReservation.edit', ['id' => $mazinReservation->BaanId]) }}">Edit</a>
-                                </td>
-                                <!-- Actions Column -->
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ is_null($mazinReservation->person->Tussenvoegsel) ? '-' : $mazinReservation->person->Tussenvoegsel }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->person->Achternaam }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->datum }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->AantalVolwassen }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ is_null($mazinReservation->AantalKinderen) ? '-' : $mazinReservation->AantalKinderen }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $mazinReservation->baan->Nummer }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <a href="{{ route('baanReservation.edit', ['id' => $mazinReservation->BaanId]) }}">Edit</a>
+                                    </td>
+                                    <!-- Actions Column -->
 
-                            </tr>
-                            @endforeach
-                            @endif
-                        </tbody>
-                    </table>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div> <!-- End of Overflow Container -->
+                    @endif
                 </div> <!-- End of Padding and White Background -->
             </div> <!-- End of Container with Yellow Background and Border -->
         </div>

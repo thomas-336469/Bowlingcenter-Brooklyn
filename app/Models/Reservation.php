@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MazinReservation extends Model
+class Reservation extends Model
 {
     use HasFactory;
 
@@ -30,7 +30,7 @@ class MazinReservation extends Model
 
     public function person()
     {
-        return $this->belongsTo(MazinPersoons::class, 'PersoonId');
+        return $this->belongsTo(Persoons::class, 'PersoonId');
     }
 
     public function baan()

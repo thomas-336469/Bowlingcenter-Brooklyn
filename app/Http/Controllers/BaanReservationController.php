@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MazinReservation;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Baan;
@@ -13,14 +13,14 @@ class BaanReservationController extends Controller
     public function index()
     {
         $user = Auth::user(); // Get the authenticated user
-        $mazinReservations = MazinReservation::all();
+        $mazinReservations = Reservation::all();
         return view('baanReservation.index', compact('mazinReservations', 'user'));
     }
 
 
     public function edit($id)
     {
-        $mazinReservation = MazinReservation::where('BaanId', $id)->firstOrFail();
+        $mazinReservation = Reservation::where('BaanId', $id)->firstOrFail();
         return view('baanReservation.edit', compact('mazinReservation'));
     }
 
@@ -35,7 +35,7 @@ class BaanReservationController extends Controller
                 'nummer' => 'required',
             ]);
 
-            $mazinReservation = MazinReservation::where('BaanId', $id)->firstOrFail();
+            $mazinReservation = Reservation::where('BaanId', $id)->firstOrFail();
             $baan = $mazinReservation->baan;
 
             if ($request->nummer < 7 && !is_null($mazinReservation->AantalKinderen)) {
@@ -55,7 +55,7 @@ class BaanReservationController extends Controller
         }
 
         $user = Auth::user(); // Get the authenticated user
-        $mazinReservations = MazinReservation::all();
+        $mazinReservations = Reservation::all();
 
         return view('baanReservation.index')->with(['success' => 'Baanummer is gewijzigd', 'mazinReservations' => $mazinReservations, 'user' => $user]);
     }
