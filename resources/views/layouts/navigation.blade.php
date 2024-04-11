@@ -18,30 +18,30 @@
                     <!-- Conditionally show the link for users with an admin role -->
                     @if(auth()->user()->role_id === 1)
                     <x-nav-link class="text-dark" :href="route('admin.options.index')" :active="request()->routeIs('admin.options.index')">
-                        {{ __('Options overzicht') }}
+                        {{ __('Options') }}
+                    </x-nav-link>
+                    @endif
+                    <!-- Add a link to the reservations create page if worker then different reservation page -->
+                    @if(auth()->user()->role_id === 2 || auth()->user()->role_id === 1)
+                    <x-nav-link :href="route('worker.reservations.create')" :active="request()->routeIs('worker.reservations.create')">
+                        {{ __('Create Reservation') }}
+                    </x-nav-link>
+                    @else
+                    <x-nav-link :href="route('reservations.create')" :active="request()->routeIs('reservations.create')">
+                        {{ __('Create Reservation') }}
                     </x-nav-link>
                     @endif
                     <x-nav-link class="text-dark" :href="route('scores')" :active="request()->routeIs('scores')">
                         {{ __('Scores') }}
                     </x-nav-link>
-                </div>
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
                     <!-- Add a link to the reservations index page -->
-                    <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
+                    @if(auth()->user()->role_id === 2 || auth()->user()->role_id === 1)
+                    <x-nav-link :href="route('worker.reservations.index')" :active="request()->routeIs('worker.reservations.index')">
                         {{ __('Reservations') }}
                     </x-nav-link>
-                    <!-- Add a link to the reservations create page -->
-                    <x-nav-link :href="route('reservations.create')" :active="request()->routeIs('reservations.create')">
-                        {{ __('Create Reservation') }}
-                    </x-nav-link>
-                    <!-- Conditionally show the link for users with an admin role -->
-                    @if(auth()->user()->role_id === 1)
-                    <x-nav-link :href="route('admin.options.index')" :active="request()->routeIs('admin.options.index')">
-                        {{ __('Admin Options') }}
+                    @else
+                    <x-nav-link :href="route('reservations.index')" :active="request()->routeIs('reservations.index')">
+                        {{ __('Reservations') }}
                     </x-nav-link>
                     @endif
                 </div>
