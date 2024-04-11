@@ -320,5 +320,10 @@ class DatabaseSeeder extends Seeder
             'amount_of_people' => 2,
             'amount_of_children' => 0,
         ]);
+
+        $this->call([
+            UserReservationSeeder::class,
+            ScoreSeeder::class,
+        ]);
     }
 }
